@@ -11,12 +11,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Sanitize input
 function clean_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-// Check if login form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = clean_input($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
@@ -29,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Invalid email format.");
     }
 
-    // Check user exists
     $stmt = $conn->prepare("SELECT id, first_name, password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
