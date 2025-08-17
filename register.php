@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="register_logic.php" method="POST">
+    <form action="register-logic.php" method="POST" class="register-form">
         <h3>Profile Details</h3>
-        <label>Profile created by *</label>
+
+       <label>Profile created by *</label>
         <select name="profile_created_by" required>
             <option value="">Select One</option>
             <option value="Self">Self</option>
@@ -20,6 +22,7 @@
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
+  
 
         <label>First Name *</label>
         <input type="text" name="first_name" required>
@@ -77,5 +80,7 @@
         <br><br>
         <button type="submit">Register</button>
     </form>
+
+    <script src="register.js"></script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 <?php
-// Database connection
 $host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'matrimony';
+$user = 'kabir';
+$pass = 'admin';
+$db = 'test';
 
 $conn = new mysqli($host, $user, $pass, $db);
 
@@ -11,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get POST data and sanitize
 function clean_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
@@ -46,10 +44,8 @@ if ($password !== $confirm_password) {
     die("Passwords do not match.");
 }
 
-// Password hashing
 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-// Prepare SQL query
 $stmt = $conn->prepare("INSERT INTO users (
     profile_created_by, looking_for, first_name, last_name,
     religion, caste, dob, marital_status, education, profession,
@@ -66,7 +62,7 @@ $stmt->bind_param("ssssssssssssss",
 );
 
 if ($stmt->execute()) {
-    echo "Registration successful!";
+    header('location: index.php');
 } else {
     echo "Error: " . $stmt->error;
 }

@@ -17,7 +17,7 @@
         </div>
 
         <div class="main">
-        <form method="POST" action="login_logic.php">
+        <form method="POST" action="login-logic.php">
     <label>Email:</label>
     <input type="email" name="email" required>
 

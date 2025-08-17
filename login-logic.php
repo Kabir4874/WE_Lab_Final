@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-// Database connection
 $host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'matrimony';
+$user = 'kabir';
+$pass = 'admin';
+$db = 'test';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -39,15 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        // Verify password
         if (password_verify($password, $user['password'])) {
-            // Successful login
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['first_name'] = $user['first_name'];
 
-            echo "Login successful. Welcome, " . $_SESSION['first_name'] . "!";
-            // redirect to dashboard if needed
-            // header("Location: dashboard.php");
+            header("location: dashboard.php");
+
             exit;
         } else {
             die("Incorrect password.");
