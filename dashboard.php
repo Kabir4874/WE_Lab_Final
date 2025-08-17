@@ -86,10 +86,8 @@ function isSelected($value, $current) {
         </div>
 
         <div class="table-container" style="width: 100%;">
-            <!-- Edit button toggles input readonly -->
             <button id="editBtn" onclick="toggleEdit()" type="button">Edit</button>
 
-            <!-- Delete form -->
             <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete your profile?');">
                 <button type="submit" name="delete" style="color:red; background:none; border:none; cursor:pointer;">Delete</button>
             </form>
